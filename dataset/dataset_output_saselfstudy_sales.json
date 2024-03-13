@@ -1,0 +1,26 @@
+{
+	"name": "dataset_output_saselfstudy_sales",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_saselfstudy_sales",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "sales"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "output",
+				"container": "slefstudy"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
