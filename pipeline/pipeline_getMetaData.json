@@ -4,7 +4,7 @@
 		"description": "checking get metadata functionality",
 		"activities": [
 			{
-				"name": "metaData_input",
+				"name": "metaData_input_details",
 				"description": "fetching metadata of input data",
 				"type": "GetMetadata",
 				"dependsOn": [],
@@ -21,7 +21,11 @@
 						"referenceName": "dataset_input_sales",
 						"type": "DatasetReference"
 					},
-					"fieldList": [],
+					"fieldList": [
+						"childItems",
+						"itemType",
+						"lastModified"
+					],
 					"storeSettings": {
 						"type": "AzureBlobStorageReadSettings",
 						"enablePartitionDiscovery": false
@@ -29,6 +33,45 @@
 					"formatSettings": {
 						"type": "DelimitedTextReadSettings"
 					}
+				}
+			},
+			{
+				"name": "Iterator_metaData",
+				"description": "Iterating over input metadata",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "metaData_input_details",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('metaData_input_details').output",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Execute Pipeline1",
+							"type": "ExecutePipeline",
+							"dependsOn": [],
+							"policy": {
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"pipeline": {
+									"referenceName": "pipeline_sales",
+									"type": "PipelineReference"
+								},
+								"waitOnCompletion": true
+							}
+						}
+					]
 				}
 			}
 		],
