@@ -5,6 +5,9 @@
 			"referenceName": "ls_saselfstudy_sales",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "sales"
+		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
