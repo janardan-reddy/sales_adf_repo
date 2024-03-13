@@ -1,0 +1,40 @@
+{
+	"name": "pipeline_getMetaData",
+	"properties": {
+		"description": "checking get metadata functionality",
+		"activities": [
+			{
+				"name": "metaData_input",
+				"description": "fetching metadata of input data",
+				"type": "GetMetadata",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataset": {
+						"referenceName": "dataset_input_sales",
+						"type": "DatasetReference"
+					},
+					"fieldList": [],
+					"storeSettings": {
+						"type": "AzureBlobStorageReadSettings",
+						"enablePartitionDiscovery": false
+					},
+					"formatSettings": {
+						"type": "DelimitedTextReadSettings"
+					}
+				}
+			}
+		],
+		"folder": {
+			"name": "dataMovement"
+		},
+		"annotations": []
+	}
+}
