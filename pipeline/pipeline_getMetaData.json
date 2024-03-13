@@ -56,25 +56,31 @@
 					"isSequential": true,
 					"activities": [
 						{
-							"name": "Execute Pipeline1",
-							"type": "ExecutePipeline",
+							"name": "fileName",
+							"type": "SetVariable",
 							"dependsOn": [],
 							"policy": {
+								"secureOutput": false,
 								"secureInput": false
 							},
 							"userProperties": [],
 							"typeProperties": {
-								"pipeline": {
-									"referenceName": "pipeline_sales",
-									"type": "PipelineReference"
-								},
-								"waitOnCompletion": true
+								"variableName": "fileName",
+								"value": {
+									"value": "@item()",
+									"type": "Expression"
+								}
 							}
 						}
 					]
 				}
 			}
 		],
+		"variables": {
+			"fileName": {
+				"type": "String"
+			}
+		},
 		"folder": {
 			"name": "dataMovement"
 		},
