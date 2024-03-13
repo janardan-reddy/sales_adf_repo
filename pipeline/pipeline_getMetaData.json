@@ -32,42 +32,6 @@
 						"type": "DelimitedTextReadSettings"
 					}
 				}
-			},
-			{
-				"name": "Iterator_metaData",
-				"description": "Iterating over input metadata",
-				"type": "ForEach",
-				"dependsOn": [
-					{
-						"activity": "metaData_input_details",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"isSequential": true,
-					"activities": [
-						{
-							"name": "fileName",
-							"type": "SetVariable",
-							"dependsOn": [],
-							"policy": {
-								"secureOutput": false,
-								"secureInput": false
-							},
-							"userProperties": [],
-							"typeProperties": {
-								"variableName": "fileName",
-								"value": {
-									"value": "@item()",
-									"type": "Expression"
-								}
-							}
-						}
-					]
-				}
 			}
 		],
 		"variables": {
